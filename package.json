@@ -1,0 +1,14 @@
+{
+  "name": "interactive-brokers-agent",
+  "version": "1.0.0",
+  "description": "Interactive Brokers Client Portal Agent",
+  "scripts": {
+    "install": "./install.sh",
+    "start": "npm run start:gateway & npm run start:mcp & wait",
+    "start:gateway": "lsof -ti:8765 | xargs kill -9 2>/dev/null || true && cd ibgw-latest && sh bin/run.sh root/conf.yaml",
+    "start:mcp": "lsof -ti:8001 | xargs kill -9 2>/dev/null || true && python mcp_server.py"
+  },
+  "keywords": ["interactive-brokers", "trading", "gateway"],
+  "author": "",
+  "license": "ISC"
+}
